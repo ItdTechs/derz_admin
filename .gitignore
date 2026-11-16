@@ -1,0 +1,9 @@
+# the database login of this server
+application/config/database.php
+# local test configuration
+application/config/testing/
+# runtime files
+application/logs/*.php
+application/cache/*
+!application/cache/index.html
+!application/logs/index.html

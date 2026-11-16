@@ -1,0 +1,20 @@
+# DerZ Admin (CodeIgniter 3)
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # nothing but assets is served from the folders of the project
+    RewriteRule ^(application|system|database)(/|$) - [F,L]
+    RewriteRule (^|/)\.(git|env) - [F,L]
+    RewriteRule \.(md|sql|example)$ - [F,L]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php/$1 [L,QSA]
+</IfModule>
+
+<IfModule mod_headers.c>
+    Header always set X-Robots-Tag "noindex, nofollow"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
